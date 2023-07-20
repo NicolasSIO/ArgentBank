@@ -1,16 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import Logo from "@/assets/img/logo.png";
+
 import "./header.css";
 
 const Header = () => {
   return (
     <header className="Header">
       <nav className="main-nav">
-        <Link className="main-nav-logo" to="./index.html">
+        <Link className="main-nav-logo" to="/">
           <img
             className="main-nav-logo-image"
-            src="/assets/img/logo.png"
+            src={Logo}
             alt="Argent Bank Logo"
           />
           <h1 className="sr-only">Argent Bank</h1>
