@@ -9,7 +9,7 @@ const Header = () => {
   return (
     <header className="Header">
       <nav className="main-nav">
-        <Link className="main-nav-logo" to="/">
+        <Link className="main-nav-logo" to="/accueil">
           <img
             className="main-nav-logo-image"
             src={Logo}
@@ -18,7 +18,7 @@ const Header = () => {
           <h1 className="sr-only">Argent Bank</h1>
         </Link>
         <div>
-          <Link className="main-nav-item" to="./sign-in.html">
+          <Link className="main-nav-item" to="/signin">
             <i className="fa fa-user-circle"></i>
             Sign In
           </Link>
