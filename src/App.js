@@ -2,8 +2,9 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Layout from "@/pages/layout/Layout";
 import Home from "@/pages/home/Home";
-import Signin from "@/pages/signin/Signin";
+import AuthRouter from "@/pages/auth/AuthRouter";
 import User from "@/pages/user/User";
+import AuthGuard from "@/_helpers/AuthGuard";
 
 import "./App.css";
 
@@ -16,8 +17,15 @@ function App() {
             <Route index element={<Home />} />
 
             <Route path="/accueil" element={<Home />} />
-            <Route path="/signin" element={<Signin />} />
-            <Route path="/user" element={<User />} />
+            <Route path="/auth/*" element={<AuthRouter />} />
+            <Route
+              path="/user"
+              element={
+                <AuthGuard>
+                  <User />
+                </AuthGuard>
+              }
+            />
           </Route>
         </Routes>
       </BrowserRouter>
