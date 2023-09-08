@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 
 import { accountService } from "@/_services/account.service";
 
@@ -22,13 +21,12 @@ const Signin = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(credentials);
-    axios
-      .post("http://localhost:3001/api/v1/user/login", credentials)
-      .then(
-        (res) => accountService.saveToken(res.data.body.token),
-        navigate("/user")
-      )
+    accountService
+      .login(credentials)
+      .then((res) => {
+        accountService.saveToken(res.data.body.token);
+        navigate("/user", { replace: true });
+      })
       .catch((error) => console.log(error));
   };
 
