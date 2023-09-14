@@ -29,6 +29,7 @@ const User = () => {
         console.log(res);
       })
       .catch((err) => console.log(err));
+    toggle();
   };
 
   return (
