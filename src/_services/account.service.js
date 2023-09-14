@@ -25,6 +25,10 @@ let updateName = (credentials) => {
   return Axios.put("/api/v1/user/profile", credentials);
 };
 
+let getUser = (token) => {
+  return Axios.post("/api/v1/user/profile", token);
+};
+
 export const accountService = {
   login,
   saveToken,
@@ -32,4 +36,5 @@ export const accountService = {
   isLogged,
   getToken,
   updateName,
+  getUser,
 };

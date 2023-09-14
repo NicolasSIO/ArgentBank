@@ -6,8 +6,10 @@ import { accountService } from "@/_services/account.service";
 import Logo from "@/assets/img/logo.png";
 
 import "./header.css";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+  const user = useSelector((state) => state.User);
   let navigate = useNavigate();
   const logout = () => {
     accountService.logout();
@@ -33,6 +35,9 @@ const Header = () => {
             </Link>
           ) : (
             <Link className="main-nav-item" to="/accueil">
+              <p>
+                {user.credentials.firstName} {user.credentials.lastName}
+              </p>
               <button className="logout" onClick={logout}>
                 Logout
               </button>

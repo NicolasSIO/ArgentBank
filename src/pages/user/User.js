@@ -2,13 +2,17 @@ import React, { useState } from "react";
 
 import { accountService } from "@/_services/account.service";
 import "./user.css";
+import { useSelector, useDispatch } from "react-redux";
 
 const User = () => {
-  const [credentials, setCredentials] = useState({
-    firstName: "",
-    lastName: "",
-  });
   const [isClicked, setIsClicked] = useState(true);
+  const user = useSelector((state) => state.User);
+  const dispatch = useDispatch();
+
+  const [credentials, setCredentials] = useState({
+    firstName: user.credentials.firstName,
+    lastName: user.credentials.lastName,
+  });
 
   const onChange = (e) => {
     setCredentials({
@@ -26,7 +30,13 @@ const User = () => {
     accountService
       .updateName(credentials)
       .then((res) => {
-        console.log(res);
+        dispatch({
+          type: "User/setData",
+          payload: {
+            firstName: res.data.body.firstName,
+            lastName: res.data.body.lastName,
+          },
+        });
       })
       .catch((err) => console.log(err));
     toggle();
@@ -39,7 +49,7 @@ const User = () => {
           <h1>
             Welcome back
             <br />
-            {credentials.firstName} {credentials.lastName}
+            {user.credentials.firstName} {user.credentials.lastName}
           </h1>
           <button className="edit-button" onClick={toggle}>
             Edit Name
