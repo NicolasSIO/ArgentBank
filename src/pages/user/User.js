@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { accountService } from "@/_services/account.service";
 import "./user.css";
@@ -42,6 +42,18 @@ const User = () => {
     toggle();
   };
 
+  useEffect(() => {
+    accountService.getUser(accountService.getToken()).then((res) => {
+      dispatch({
+        type: "User/setData",
+        payload: {
+          firstName: res.data.body.firstName,
+          lastName: res.data.body.lastName,
+        },
+      });
+    });
+  }, []);
+
   return (
     <main className="main bg-dark">
       {isClicked ? (
@@ -73,10 +85,12 @@ const User = () => {
                 placeholder={credentials.lastName}
               ></input>
             </div>
-            <button className="edit-button" onClick={toggle}>
-              Cancel
-            </button>
-            <button className="edit-button">Edit Name</button>
+            <div className="group-buttons">
+              <button className="edit-button" onClick={toggle}>
+                Cancel
+              </button>
+              <button className="edit-button">Edit Name</button>
+            </div>
           </form>
         </div>
       )}

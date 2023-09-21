@@ -28,15 +28,16 @@ const Signin = () => {
       .login(credentials)
       .then((res) => {
         accountService.saveToken(res.data.body.token);
-        accountService.getUser(res.data.body.token);
-        dispatch({
-          type: "User/setData",
-          payload: {
-            firstName: res.data.body.firstName,
-            lastName: res.data.body.lastName,
-          },
+        accountService.getUser(res.data.body.token).then((res) => {
+          dispatch({
+            type: "User/setData",
+            payload: {
+              firstName: res.data.body.firstName,
+              lastName: res.data.body.lastName,
+            },
+          });
+          navigate("/user", { replace: true });
         });
-        navigate("/user", { replace: true });
       })
       .catch((error) => console.log(error));
   };

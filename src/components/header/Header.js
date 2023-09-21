@@ -34,14 +34,16 @@ const Header = () => {
               Sign In
             </Link>
           ) : (
-            <Link className="main-nav-item" to="/accueil">
-              <p>
+            <div className="group-items">
+              <p className="userName">
                 {user.credentials.firstName} {user.credentials.lastName}
               </p>
-              <button className="logout" onClick={logout}>
-                Logout
-              </button>
-            </Link>
+              <Link className="main-nav-item" to="/accueil">
+                <button className="logout" onClick={logout}>
+                  Logout
+                </button>
+              </Link>
+            </div>
           )}
         </div>
       </nav>

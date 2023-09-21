@@ -50,3 +50,13 @@
 .logout:hover {
   text-decoration: underline;
 }
+
+.group-items {
+  display: flex;
+  gap: 5px;
+}
+
+.userName {
+  color: black;
+  font-weight: 700;
+}
