@@ -11,8 +11,8 @@ const Signin = () => {
   const user = useSelector((state) => state.User);
   const dispatch = useDispatch();
   const [credentials, setCredentials] = useState({
-    email: "tony@stark.com",
-    password: "password123",
+    email: "",
+    password: "",
   });
 
   const onChange = (e) => {
