@@ -30,15 +30,17 @@ const Header = () => {
         <div>
           {!accountService.isLogged() ? (
             <Link className="main-nav-item" to="/auth/signin">
-              <i className="fa fa-user-circle"></i>
+              <i className="fa fa-user-circle header-icons"></i>
               Sign In
             </Link>
           ) : (
             <div className="group-items">
               <p className="userName">
-                {user.credentials.firstName} {user.credentials.lastName}
+                <i className="fa fa-user-circle header-icons"></i>
+                {user.credentials.firstName}
               </p>
               <Link className="main-nav-item" to="/accueil">
+                <i class="fa fa-sign-out header-icons"></i>
                 <button className="logout" onClick={logout}>
                   Logout
                 </button>

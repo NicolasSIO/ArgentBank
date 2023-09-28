@@ -61,7 +61,9 @@ const User = () => {
           <h1>
             Welcome back
             <br />
-            {user.credentials.firstName} {user.credentials.lastName}
+            <p className="name">
+              {user.credentials.firstName} {user.credentials.lastName}!
+            </p>
           </h1>
           <button className="edit-button" onClick={toggle}>
             Edit Name
@@ -86,10 +88,10 @@ const User = () => {
               ></input>
             </div>
             <div className="group-buttons">
+              <button className="edit-button">Save</button>
               <button className="edit-button" onClick={toggle}>
                 Cancel
               </button>
-              <button className="edit-button">Edit Name</button>
             </div>
           </form>
         </div>

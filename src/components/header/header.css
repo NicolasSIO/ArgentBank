@@ -1,6 +1,5 @@
 .Header {
   color: #fff;
-  margin-bottom: 2rem;
 }
 
 .main-nav {
@@ -53,10 +52,14 @@
 
 .group-items {
   display: flex;
-  gap: 5px;
+  gap: 15px;
 }
 
 .userName {
   color: black;
   font-weight: 700;
+}
+
+.header-icons {
+  margin-right: 5px;
 }
